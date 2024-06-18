@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/admin-dashboard.css">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BookHaven</a>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="location.href='/logout'">Logout</button>
+        </div>
+    </nav>   
+    <h1>Welcome to the Admin Dashboard</h1>
+
+    <h2>Customers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Pincode</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th>Date of Birth</th>
+                <th>Amount</th>
+                <th>Owned Books</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data2.forEach(function(customer) { %>
+                <tr>
+                    <td><%= customer.customer_id %></td>
+                    <td><%= customer.first_name + ' ' + customer.last_name %></td>
+                    <td><%= customer.email %></td>
+                    <td><%= customer.pincode %></td>
+                    <td><%= customer.address %></td>
+                    <td><%= customer.contact %></td>
+                    <td><%= customer.date_of_birth %></td>
+                    <td><%= customer.amount %></td>
+                    <td><%= customer.owned_books %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <button><a href="/manage-customers">Manage Customers</a></button> <!-- Link to Manage Customers page -->
+
+    <h2>Inventory</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Quantity</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data1.forEach(function(book) { %>
+                <tr>
+                    <td><%= book.book_id %></td>
+                    <td><%= book.book_name %></td>
+                    <td><%= book.author_name %></td>
+                    <td><%= book.stock %></td>
+                    <td><%= book.genre %></td>
+                    <td><%= book.price %></td>
+                    <td><%= book.age_rating %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h3> Orders</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer ID</th>
+                <th>Book ID</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data3.forEach(function(order) { %>
+                <tr>
+                    <td><%= order.order_id %></td>
+                    <td><%= order.customer_id %></td>
+                    <td><%= order.book_id %></td>
+                    <td><%= order.quantity %></td>
+                    <td><%= order.total_cost %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+
+    <button><a href="/manage-inventory">Manage Inventory</a></button> <!-- Link to Manage Inventory page -->
+</body>
+</html>
