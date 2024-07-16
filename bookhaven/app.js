@@ -55,7 +55,7 @@ app.use(passport.session())
 passport.use(new LocalStrategy(
     async (email, passkey, done) => {
         try {
-            console.log("wtf");
+            console.log("checking!");
             const [rows] = await pool.query('SELECT * FROM Customer WHERE email = ? AND passkey = ?', [email, passkey]);
             const user = rows[0];
             if (!user || user.passkey !== passkey) {
